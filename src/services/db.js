@@ -13,10 +13,9 @@ const sequelize = new Sequelize({
   define: {
     timestamps: false, // Disable automatic timestamps for each model
   },
+  ssl:false,
   dialectOptions: {
-    ssl: {
-      rejectUnauthorized: false
-    }
+    ssl:false
   },
 });
 
