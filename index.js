@@ -1,8 +1,23 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
+const sequelize = require('sequelize');
+const Sequelize = require('./src/services/db');
+
+const userModel = require('./src/model/user')(Sequelize,sequelize);
 
 app.get("/", (req, res) => res.type('html').send(html));
+
+app.get("/users",async (req, res) => {
+
+    let result = await userModel.findAll();
+
+
+    res.status(200).send({
+        result
+    })
+
+});
 
 
 const html = `
