@@ -8,6 +8,7 @@ Used Nodejs, express and mysql for development.
 - [Features](#features)
 - [Hosting](#hosting)
 - [Installation](#installation)
+- [Database Schema](#DatabaseSchema)
 
 
 ## Features
@@ -74,7 +75,7 @@ Follow these steps to set up the Omni App on your local machine:
     ```
 
 
-## Database Schema
+## DatabaseSchema
 
 To interact with the database in your library, users need to be aware of the underlying schema. Below is a description of the tables and their structures:
 
