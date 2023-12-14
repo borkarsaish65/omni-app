@@ -3,35 +3,28 @@ const app = express();
 const port = process.env.PORT || 3001;
 const sequelize = require('sequelize');
 const Sequelize = require('./src/services/db');
+const userRouter = require('./src/router/user.router');
+const postsRouter = require('./src/router/posts.router');
+const errorMiddleware = require("./src/middleware/error.middleware");
 
-const userModel = require('./src/model/user')(Sequelize,sequelize);
+// Middleware to parse incoming JSON and form data
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.get("/", (req, res) => res.type('html').send(html));
+app.use('/users',userRouter);
+app.use('/posts',postsRouter);
 
-app.get("/users",async (req, res) => {
-
-    let result = await userModel.findAll();
-
-
-    res.status(200).send({
-        result
-    })
-
+// 404 error
+app.all('*', (req, res, next) => {
+    console.log(req.url);
+    console.log('Endpoint not found!')
+    let err = new Error('Enpoint not found!');
+    err.status = 404
+    console.log(err)
+    next(err);
 });
 
+// Error middleware
+app.use(errorMiddleware);
 
-const html = `
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Hello from Saish!</title>
-  </head>
-  <body>
-    <section>
-      Hello from Saish!
-    </section>
-  </body>
-</html>
-`
-
-const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+const server = app.listen(port, () => console.log(`App listening on port ${port}!`));
