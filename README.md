@@ -36,7 +36,7 @@ Follow these steps to set up the Omni App on your local machine:
 1. **Clone the repository:**
 
     ```bash
-    git clone [https://github.com/your-username/omni-app.git](https://github.com/borkarsaish65/omni-app.git)
+    git clone https://github.com/borkarsaish/omni-app.git
     ```
 
 2. **Navigate to the project directory:**
