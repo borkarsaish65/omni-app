@@ -13,7 +13,7 @@ function validatePassword(password) {
 }
 
 function validateNameId(name_id) {
-    // Minimum 8 characters, at least one uppercase letter, one lowercase letter, and one number
+    // alphanumeric string between 3 to 15 characters
     const nameIdRegex = /^[a-zA-Z0-9]{3,15}$/;
 
     return nameIdRegex.test(name_id);
